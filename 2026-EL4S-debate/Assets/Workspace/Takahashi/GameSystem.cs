@@ -1,38 +1,35 @@
 using UnityEngine;
 
 /// <summary>
-/// ゲーム全体の流れを管理するクラス
+/// ゲーム全体の流れ（ラウンド制）を管理するクラス
 /// </summary>
 public class GameSystem : MonoBehaviour
 {
-    // ゲームの進行状況
-    public enum GamePhase { Ready, InBattle, Result }
-    
+    public enum GamePhase { Ready, InBattle, RoundEnd, Result }
+
     [Header("ゲームの状態")]
-    [SerializeField]
-    private GamePhase currentPhase = GamePhase.Ready;
+    [SerializeField] private GamePhase currentPhase = GamePhase.Ready;
+    [SerializeField] private int currentRound = 1;
+    [SerializeField] private int maxRounds = 6;
 
     [Header("参照")]
-    [SerializeField, Tooltip("AI通信の流れを管理します。")]
-    private AIPipeline pipeline;
-    [SerializeField, Tooltip("チームBの自動チャット入力を管理します。")]
-    private TeamBAutoChatHandler teamB; 
+    [SerializeField] private AIPipeline pipeline;
+    [SerializeField] private TeamBAutoChatHandler teamB;
+
 
     [Header("設定")]
-    [SerializeField,Tooltip("試合時間です。")]
-    private float matchDuration = 60f;
-    private float matchTimer;
+    [SerializeField, Tooltip("1ラウンドあたりの時間")]
+    private float roundDuration = 10f;
+    private float roundTimer;
 
     private void Awake()
     {
-        // パイプラインは非アクティブにしておく
         pipeline.enabled = false;
-        teamB.enabled = false; 
+        teamB.enabled = false;
     }
 
     void Start()
     {
-        // ゲーム開始の準備
         StartGame();
     }
 
@@ -40,53 +37,65 @@ public class GameSystem : MonoBehaviour
     {
         if (currentPhase == GamePhase.InBattle)
         {
-            // 進行を有効化する
             pipeline.enabled = true;
             teamB.enabled = true;
 
-            matchTimer -= Time.deltaTime;
-            if (matchTimer <= 0f)
+            roundTimer -= Time.deltaTime;
+            if (roundTimer <= 0f)
             {
-                // タイムアップ
-                EndGame();
+                ProcessRoundEnd();
             }
         }
     }
 
-    /// <summary>
-    /// ゲームを開始するメソッド
-    /// </summary>
     public void StartGame()
     {
-        currentPhase = GamePhase.InBattle;
-        matchTimer = matchDuration;
+        currentRound = 1;
+        StartNewRound();
+    }
 
-        // Pipelineを有効化
-        // またはカウント開始を指示
-        Debug.Log("レスバ開始！");
+    private void StartNewRound()
+    {
+        Debug.Log($"第 {currentRound} ラウンド開始！");
+        currentPhase = GamePhase.InBattle;
+        roundTimer = roundDuration;
+
+        // Pipeline側のタイマーもリセットして同期させる（必要なら）
+        // pipeline.ResetTimer(); 
+    }
+
+    private void ProcessRoundEnd()
+    {
+        Debug.Log($"第 {currentRound} ラウンド終了");
+
+        if (currentRound >= maxRounds)
+        {
+            EndGame();
+        }
+        else
+        {
+            // 次のラウンドへ
+            currentRound++;
+            StartNewRound();
+
+            // TODO: ここで「ROUND 2」などのUI演出を挟む場合は
+            // ステートを RoundEnd にしてコルーチンなどで待機すると「いい塩梅」です
+        }
     }
 
     public void EndGame()
     {
         currentPhase = GamePhase.Result;
-
-        //進行を止める
-        pipeline.enabled = false; 
+        pipeline.enabled = false;
         teamB.enabled = false;
+        pipeline.CancelInvoke();
 
-        pipeline.CancelInvoke();  // 進行中のInvoke（擬似通信）も止める
-
-        // Pipelineの動きを止めて、最終結果を表示する
-        Debug.Log("タイムアップ！終了！");
+        Debug.Log("全ラウンド終了！最終結果発表！");
     }
 
-    /// <summary>
-    /// スコアを更新するメソッド
-    /// AIPipelineのVerdict（判定）から呼ばれる想定
-    /// </summary>
-    /// <param name="_score"></param>
     public void UpdateScore(int _score)
     {
-        // TODO: UIにスコアを反映させる
+        // AIPipelineから判定が返ってきた時に呼ばれる
+        Debug.Log($"Round {currentRound} Result: {_score}");
     }
 }
