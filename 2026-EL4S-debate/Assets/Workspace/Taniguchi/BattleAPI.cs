@@ -78,7 +78,7 @@ public class BattleAPI : MonoBehaviour
                 previous_opponent_output = save_result.side_a_result.output_result
             },
 
-            previous_neutral_comment = ""
+            previous_neutral_comment = save_result.neutral_result.comment // 前回のニュートラルAIのコメントを渡す（初回は空文字）
         };
     }
 
