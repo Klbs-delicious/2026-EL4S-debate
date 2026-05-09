@@ -1,0 +1,101 @@
+【AIレスバトル Flask APIサーバー構築手順】
+
+■ 1. Python をインストール
+
+Python 3.10 以上をインストールしてください。
+
+Python公式：
+https://www.python.org/downloads/
+
+インストール時に必ず：
+
+☑ Add Python to PATH
+
+にチェックを入れてください。
+
+---
+
+■ 2. 必要ライブラリをインストール
+
+コマンドプロンプトを開き、
+server フォルダへ移動してください。
+
+例：
+
+cd ○○/API_server
+
+その後、以下を実行。
+
+pip install -r requirements.txt
+
+---
+
+■ 3. Flask サーバー起動
+
+server フォルダから。
+
+例：
+
+cd Desktop/server
+
+その後：
+
+python app.py
+
+成功すると以下のように表示される。
+
+Running on http://0.0.0.0:5000
+
+---
+
+■ 4. IPアドレス確認
+
+コマンドプロンプトで：
+
+ipconfig
+
+を実行。
+
+有線なら：
+「イーサネット アダプター」
+
+無線なら：
+「Wireless LAN adapter Wi-Fi」
+
+の IPv4 アドレスを見る。
+
+例：
+
+IPv4 アドレス: 10.64.61.8
+
+---
+
+■ 5. Unity 側 URL
+
+Unity の flaskUrl を変更。
+
+例：
+
+http://10.64.61.8:5000/api/gemini
+
+---
+
+■ 6. Unity 側で HTTP 通信許可
+
+Unity：
+
+Edit
+↓
+Project Settings
+↓
+Player
+↓
+Other Settings
+↓
+Configuration
+↓
+Allow downloads over HTTP
+↓
+Always Allowed
+
+---
