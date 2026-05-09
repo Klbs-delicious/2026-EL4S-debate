@@ -12,12 +12,8 @@ public class AIPipeline : MonoBehaviour
     [SerializeField]
     private AIState currentState = AIState.Idle;
 
-    // 通信用に切り出した（スナップショット）データ
-    private string payloadA;
-    private string payloadB;
-
     [Header("Settings")]
-    [Tooltip("何秒ごとに判定するか（AIにチャット内容を送るのか）")]
+    [SerializeField,Tooltip("何秒ごとに判定するか（AIにチャット内容を送るのか）")]
     private float judgeInterval = 10f; 
     private float timer;
 
