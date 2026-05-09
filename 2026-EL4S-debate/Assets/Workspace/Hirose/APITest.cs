@@ -44,18 +44,18 @@ public class APITest : MonoBehaviour
         {
             battle_id = "battle_001",
             round = 1,
-            topic = "Python”h vs C++”h",
+            topic = "Œ¢”h vs ”L”h",
 
             side_a = new APICommunicator.SideRequestData
             {
-                side = "Python”h",
+                side = "Œ¢”h",
                 comments = PostData.GetPythonPosts(),
                 previous_opponent_output = ""
             },
 
             side_b = new APICommunicator.SideRequestData
             {
-                side = "C++”h",
+                side = "”L”h",
                 comments = PostData.GetCppPosts(),
                 previous_opponent_output = ""
             },
