@@ -16,7 +16,7 @@ using UnityEngine.Networking;
 public class APICommunicator : MonoBehaviour
 {
     [Header("Gemini API Key")]
-    [SerializeField] private string apiKey = "AIzaSyB4vKrar_aKp_uyB-zsTMlLsBR-23W7C2AAIzaSyB4vKrar_aKp_uyB-zsTMlLsBR-23W7C2A";
+    [SerializeField] private string apiKey = "AIzaSyAYtvdbQP-aYhDm9qGavGDUdfeKebePYBA";
 
     [Header("Preferred Model")]
     [SerializeField] private string preferredModel = "gemini-1.5-flash";
