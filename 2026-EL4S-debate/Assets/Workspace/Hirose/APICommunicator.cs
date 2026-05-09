@@ -16,7 +16,7 @@ using UnityEngine.Networking;
 public class APICommunicator : MonoBehaviour
 {
     [Header("Gemini API Key")]
-    [SerializeField] private string apiKey = "AIzaSyB4vKrar_aKp_uyB-zsTMlLsBR-23W7C2AAIzaSyB4vKrar_aKp_uyB-zsTMlLsBR-23W7C2A";
+    [SerializeField] private string apiKey = "AIzaSyAYtvdbQP-aYhDm9qGavGDUdfeKebePYBA";
 
     [Header("Preferred Model")]
     [SerializeField] private string preferredModel = "gemini-1.5-flash";
@@ -301,15 +301,17 @@ $@"あなたはAIレスバトルアプリの進行AIです。
 {GetSafeText(data.previous_neutral_comment)}
 
 【代表発言の条件】
-・各陣営の発言は200文字以内
+・各陣営の発言は全角1文字として、50文字～70文字
 ・少し熱量のある、人間らしい口調にする
 ・相手陣営への人格否定はしない
 ・ユーザーの元コメントの表現を尊重し、可能な限りそのままの形で使う
 ・一般的な考えは排除し、あくまでコメント内容を補強する形で付け加える
 
 【ニュートラルAIの条件】
-・両陣営のどちらの意見に納得感があるか判断する
-・scoreは、選んだ陣営への納得度を0〜100で表す
+・両陣営のどちらの意見に納得感があるかを判断する
+・評価は論理性、説得力、反論力、エンタメ性の４項目
+・それぞれの評価項目は10段階で、合計評価の高さで判断する
+・scoreは、-100～100で、負が大きいほうがside_a寄り、正が大きいほうがside_b寄りとする
 ・selected_sideには選んだ陣営名を書く
 ・commentは一言で理由を書く
 

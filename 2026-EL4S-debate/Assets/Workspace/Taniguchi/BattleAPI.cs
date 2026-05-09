@@ -8,13 +8,18 @@
  */
 
 using System.Collections;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class APITest : MonoBehaviour
+public class BattleAPI : MonoBehaviour
 {
     [SerializeField] private APICommunicator api;
 
+    [SerializeField] private CommentSet commentSet_A = new CommentSet(); // コメントセットの参照（必要に応じて使用）
+    [SerializeField] private CommentSet commentSet_B = new CommentSet();
+    public bool output = false;
+    APICommunicator.BattleCombinedResult saveresult;
     private void Start()
     {
         StartCoroutine(RunBattleTest());
@@ -29,6 +34,8 @@ public class APITest : MonoBehaviour
             battleData,
             result =>
             {
+                commentSet_A.ClearComments();
+                commentSet_B.ClearComments();
                 OutputResult(result);
             },
             error =>
@@ -44,24 +51,34 @@ public class APITest : MonoBehaviour
         {
             battle_id = "battle_001",
             round = 1,
-            topic = "犬派 vs 猫派",
+            topic = "Python派 vs C++派",
 
             side_a = new APICommunicator.SideRequestData
             {
-                side = "犬派",
-                comments = PostData.GetPythonPosts(),
+                side = "Python派",
+                comments = commentSet_A.GetPosts(),
                 previous_opponent_output = ""
             },
 
             side_b = new APICommunicator.SideRequestData
             {
-                side = "猫派",
-                comments = PostData.GetCppPosts(),
+                side = "C++派",
+                comments = commentSet_B.GetPosts(),
                 previous_opponent_output = ""
             },
 
             previous_neutral_comment = ""
         };
+    }
+
+    public void CommentSet_A(string str)
+    {
+        commentSet_A.AddComment(str);
+    }
+
+    public void CommentSet_B(string str)
+    {
+        commentSet_B.AddComment(str);
     }
 
     private void OutputResult(APICommunicator.BattleCombinedResult result)
@@ -78,5 +95,9 @@ public class APITest : MonoBehaviour
         Debug.Log("スコア: " + result.neutral_result.score);
         Debug.Log("選択陣営: " + result.neutral_result.selected_side);
         Debug.Log("一言コメント: " + result.neutral_result.comment);
+
+        saveresult = result; // 結果を保存しておく（必要に応じて後で使用可能）
+
+        output = true; // 出力完了後、フラグを下げる
     }
 }
