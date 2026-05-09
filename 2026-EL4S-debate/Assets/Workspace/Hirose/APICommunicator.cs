@@ -1,10 +1,13 @@
 ﻿/*
- * 最終更新日時：2026/05/08
+ * 最終更新日時：2026/05/09
  * 作成者：廣瀬宗貴
  *
  * 概要：
- * Gemini APIに対して、AIレスバトル1ラウンド分の情報を送信し、
- * 両陣営の代表発言とニュートラルAIの判定結果を一度に取得するクラス。
+ * Flaskサーバーに対して、AIレスバトル1ラウンド分の情報を送信し、
+ * Flask経由でGemini APIの結果を取得するクラス。
+ *
+ * 注意：
+ * Unity側にはGemini APIキーを絶対に置かない。
  */
 
 using System;
@@ -15,15 +18,9 @@ using UnityEngine.Networking;
 
 public class APICommunicator : MonoBehaviour
 {
-    [Header("Gemini API Key")]
-    [SerializeField] private string apiKey = "AIzaSyAYtvdbQP-aYhDm9qGavGDUdfeKebePYBA";
+    [Header("Flask Server URL")]
+    private string flaskUrl = "http://10.64.61.8:5000/api/gemini";
 
-    [Header("Preferred Model")]
-    [SerializeField] private string preferredModel = "gemini-1.5-flash";
-
-    private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta";
-
-    private string usableModel = "";
 
     [Serializable]
     public class BattleRequestData
@@ -97,45 +94,12 @@ public class APICommunicator : MonoBehaviour
         public Content content;
     }
 
-    [Serializable]
-    private class ModelListResponse
-    {
-        public GeminiModel[] models;
-    }
-
-    [Serializable]
-    private class GeminiModel
-    {
-        public string name;
-        public string[] supportedGenerationMethods;
-    }
-
     public IEnumerator SendBattleRequest(
         BattleRequestData battleData,
         Action<BattleCombinedResult> onSuccess,
         Action<string> onError = null
     )
     {
-        if (string.IsNullOrEmpty(apiKey))
-        {
-            onError?.Invoke("Gemini APIキーが設定されていません。");
-            yield break;
-        }
-
-        if (string.IsNullOrEmpty(usableModel))
-        {
-            yield return StartCoroutine(SelectUsableModel(
-                () => { },
-                error => onError?.Invoke(error)
-            ));
-
-            if (string.IsNullOrEmpty(usableModel))
-            {
-                yield break;
-            }
-        }
-
-        string url = $"{BaseUrl}/models/{usableModel}:generateContent?key={apiKey}";
         string prompt = CreatePrompt(battleData);
 
         GeminiRequest requestData = new GeminiRequest
@@ -154,7 +118,7 @@ public class APICommunicator : MonoBehaviour
 
         string json = JsonUtility.ToJson(requestData);
 
-        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        UnityWebRequest request = new UnityWebRequest(flaskUrl, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
 
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -165,7 +129,7 @@ public class APICommunicator : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("生成APIエラー: " + request.responseCode);
+            Debug.LogError("Flask APIエラー: " + request.responseCode);
             Debug.LogError(request.downloadHandler.text);
             onError?.Invoke(request.error + " / " + request.downloadHandler.text);
             yield break;
@@ -203,73 +167,6 @@ public class APICommunicator : MonoBehaviour
         }
 
         onSuccess?.Invoke(result);
-    }
-
-    private IEnumerator SelectUsableModel(Action onSuccess, Action<string> onError)
-    {
-        string url = $"{BaseUrl}/models?key={apiKey}";
-
-        UnityWebRequest request = UnityWebRequest.Get(url);
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
-        {
-            onError?.Invoke(request.error + " / " + request.downloadHandler.text);
-            yield break;
-        }
-
-        ModelListResponse modelList =
-            JsonUtility.FromJson<ModelListResponse>(request.downloadHandler.text);
-
-        if (modelList == null || modelList.models == null)
-        {
-            onError?.Invoke("利用可能なGeminiモデルが取得できませんでした。");
-            yield break;
-        }
-
-        string preferredFullName = "models/" + preferredModel;
-
-        for (int i = 0; i < modelList.models.Length; i++)
-        {
-            if (modelList.models[i].name == preferredFullName &&
-                SupportsGenerateContent(modelList.models[i]))
-            {
-                usableModel = preferredModel;
-                onSuccess?.Invoke();
-                yield break;
-            }
-        }
-
-        for (int i = 0; i < modelList.models.Length; i++)
-        {
-            if (SupportsGenerateContent(modelList.models[i]) &&
-                modelList.models[i].name.Contains("flash"))
-            {
-                usableModel = modelList.models[i].name.Replace("models/", "");
-                onSuccess?.Invoke();
-                yield break;
-            }
-        }
-
-        onError?.Invoke("generateContent対応モデルが見つかりませんでした。");
-    }
-
-    private bool SupportsGenerateContent(GeminiModel model)
-    {
-        if (model.supportedGenerationMethods == null)
-        {
-            return false;
-        }
-
-        for (int i = 0; i < model.supportedGenerationMethods.Length; i++)
-        {
-            if (model.supportedGenerationMethods[i] == "generateContent")
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private string CreatePrompt(BattleRequestData data)
@@ -310,7 +207,7 @@ $@"あなたはAIレスバトルアプリの進行AIです。
 【ニュートラルAIの条件】
 ・両陣営のどちらの意見に納得感があるかを判断する
 ・評価は論理性、説得力、反論力、エンタメ性の４項目
-・それぞれの評価項目は10段階で、合計評価の高さで判断する
+・それぞれの評価項目は10段階で、合計評価の高さを決める
 ・scoreは、-100～100で、負が大きいほうがside_a寄り、正が大きいほうがside_b寄りとする
 ・selected_sideには選んだ陣営名を書く
 ・commentは一言で理由を書く
