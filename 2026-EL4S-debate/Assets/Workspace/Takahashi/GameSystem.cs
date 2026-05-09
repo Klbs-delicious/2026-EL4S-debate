@@ -15,6 +15,8 @@ public class GameSystem : MonoBehaviour
     [Header("参照")]
     [SerializeField, Tooltip("AI通信の流れを管理します。")]
     private AIPipeline pipeline;
+    [SerializeField, Tooltip("チームBの自動チャット入力を管理します。")]
+    private TeamBAutoChatHandler teamB; 
 
     [Header("設定")]
     [SerializeField,Tooltip("試合時間です。")]
@@ -25,6 +27,7 @@ public class GameSystem : MonoBehaviour
     {
         // パイプラインは非アクティブにしておく
         pipeline.enabled = false;
+        teamB.enabled = false; 
     }
 
     void Start()
@@ -37,8 +40,9 @@ public class GameSystem : MonoBehaviour
     {
         if (currentPhase == GamePhase.InBattle)
         {
-            // AI進行を有効化する
+            // 進行を有効化する
             pipeline.enabled = true;
+            teamB.enabled = true;
 
             matchTimer -= Time.deltaTime;
             if (matchTimer <= 0f)
@@ -66,7 +70,10 @@ public class GameSystem : MonoBehaviour
     {
         currentPhase = GamePhase.Result;
 
-        pipeline.enabled = false; // Pipelineの進行を止める
+        //進行を止める
+        pipeline.enabled = false; 
+        teamB.enabled = false;
+
         pipeline.CancelInvoke();  // 進行中のInvoke（擬似通信）も止める
 
         // Pipelineの動きを止めて、最終結果を表示する
