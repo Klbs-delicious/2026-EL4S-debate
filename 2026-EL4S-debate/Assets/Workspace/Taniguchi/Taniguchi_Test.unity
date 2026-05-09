@@ -168,7 +168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 251758539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251758537
 GameObject:
@@ -195,12 +195,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251758537}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
+  m_Children:
+  - {fileID: 1252315644}
+  - {fileID: 22995948}
+  m_Father: {fileID: 1566928680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &251758540
 MonoBehaviour:
@@ -217,7 +219,21 @@ MonoBehaviour:
   api: {fileID: 1566928679}
   commentSet_A: {fileID: 1252315643}
   commentSet_B: {fileID: 22995947}
+  battle_topic: "Python\u6D3E vs C++\u6D3E"
+  battle_side_a: "Python\u6D3E"
+  battle_side_b: "C++\u6D3E"
   output: 0
+  save_result:
+    side_a_result:
+      side: 
+      output_result: 
+    side_b_result:
+      side: 
+      output_result: 
+    neutral_result:
+      score: 0
+      selected_side: 
+      comment: 
 --- !u!1 &1252315642
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,12 +278,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252315642}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 251758539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1566928677
 GameObject:
@@ -312,7 +328,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 251758539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946061676
@@ -458,6 +475,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 1946061679}
   - {fileID: 1566928680}
-  - {fileID: 251758539}
-  - {fileID: 1252315644}
-  - {fileID: 22995948}
