@@ -19,7 +19,8 @@ using UnityEngine.Networking;
 public class APICommunicator : MonoBehaviour
 {
     [Header("Flask Server URL")]
-    [SerializeField] private string flaskUrl = "http://127.0.0.1:5000/api/gemini";
+    private string flaskUrl = "http://10.64.61.8:5000/api/gemini";
+
 
     [Serializable]
     public class BattleRequestData
