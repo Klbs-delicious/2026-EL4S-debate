@@ -26,6 +26,7 @@ public class AIPipeline : MonoBehaviour
 
     [SerializeField]
     bool isDebugMode = true;
+    [SerializeField] private IAIssuemanager aiManager;
 
     private bool aiOutput = false;
     public APICommunicator.BattleCombinedResult result;
@@ -117,9 +118,11 @@ public class AIPipeline : MonoBehaviour
         // TODO: ここで受け取った結果をもとに演出の処理を呼ぶ
         result = battleAPI.save_result;
 
-        // スコアの更新
-        int score = result.neutral_result.score;
-        gameSystem.UpdateScore(score);
+        aiManager.ReflecttionAnswer(result);
+
+        //// スコアの更新
+        //int score = result.neutral_result.score;
+        //gameSystem.UpdateScore(score);
 
         // 演出時間を考慮して3秒後にIdleに戻る
         Invoke("BackToIdle", 3.0f);

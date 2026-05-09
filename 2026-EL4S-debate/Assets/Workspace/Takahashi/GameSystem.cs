@@ -16,6 +16,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private AIPipeline pipeline;
     [SerializeField] private TeamBAutoChatHandler teamB;
 
+
     [Header("İ’è")]
     [SerializeField, Tooltip("1ƒ‰ƒEƒ“ƒh‚ ‚½‚è‚ÌŠÔ")]
     private float roundDuration = 10f;
