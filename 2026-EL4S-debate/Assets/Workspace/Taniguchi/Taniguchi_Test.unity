@@ -773,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: comments.Array.size
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[0]'
@@ -807,6 +807,22 @@ PrefabInstance:
       propertyPath: 'comments.Array.data[7]'
       value: "\u72AC\u3068\u304B\u3044\u3046\u9CF4\u304D\u58F0\u3046\u308B\u3055\u304F\u3066\u3067\u304B\u3044\u3060\u3051\u306E\u30B4\u30DFwwwww"
       objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[8]'
+      value: "\u304A\u76EE\u76EE\u304C\u3064\u3076\u3089\u3067\u3044\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[9]'
+      value: "\u3082\u3075\u3082\u3075\u3057\u3066\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[10]'
+      value: "\u611B\u5B0C\u304C\u3042\u308B\u306E\u3067\u3001\u632F\u308A\u56DE\u3055\u308C\u3066\u3082\u30A4\u30E9\u30A4\u30E9\u3057\u306A\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[11]'
+      value: "\u81EA\u5DF1\u4E3B\u5F35\u304C\u5C11\u306A\u3044\u304B\u3089\u6C17\u697D"
+      objectReference: {fileID: 0}
     - target: {fileID: 4366295149460951212, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: flaskUrl
       value: https://10.77.120.186:5000/api/gemini
@@ -829,7 +845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: comments.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[0]'
@@ -837,23 +853,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[1]'
-      value: "\u982D\u304C\u3044\u3044"
+      value: "\u304B\u3057\u3053\u3044"
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[2]'
-      value: "\u6575\u3092\u565B\u307F\u6BBA\u305B\u308B"
+      value: "\u76F8\u624B\u3092\u5699\u307F\u6BBA\u305B\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[3]'
-      value: "\u30C0\u30FC\u30AF\u30BD\u30A6\u30EB\u3067\u30AF\u30BD\u5F37\u3044"
+      value: "\u30C0\u30FC\u30AF\u30BD\u30A6\u30EB\u3067\u5F37\u3044"
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[4]'
-      value: "\u732B\u30AB\u30B9\u606F\u3057\u3066\u308B?wwwwwwww"
+      value: "\u732B\u30AB\u30B9\u606F\u3057\u3066\u308B~?wwwwww"
       objectReference: {fileID: 0}
     - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: 'comments.Array.data[5]'
-      value: 
+      value: "\u6CE5\u68D2\u3084\u4E0D\u5BE9\u8005\u3092\u8FFD\u3044\u6255\u3063\u3066\u304F\u308C\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[6]'
+      value: "\u30C9\u306F\u5A01\u5727\u7684\u306A\u4EBA\u304C\u4F7F\u3046"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
