@@ -1,0 +1,120 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+/// <summary>
+/// AI通信の流れを管理するクラス
+/// </summary>
+public class AIPipeline : MonoBehaviour
+{
+    // データの進行状況を定義
+    public enum AIState { Idle, Processing, Connecting, Verdict }
+
+    [SerializeField]
+    private AIState currentState = AIState.Idle;
+
+    // 通信用に切り出した（スナップショット）データ
+    private string payloadA;
+    private string payloadB;
+
+    [Header("Settings")]
+    [Tooltip("何秒ごとに判定するか（AIにチャット内容を送るのか）")]
+    private float judgeInterval = 10f; 
+    private float timer;
+
+    [SerializeField]
+    bool isDebugMode = true;
+
+    void Update()
+    {
+        // 送信待ち時間の更新
+        if (currentState == AIState.Idle)
+        {
+            timer += Time.deltaTime;
+            if (timer >= judgeInterval)
+            {
+                // AIに送る処理を開始
+                StartProcessing();
+            }
+
+            // デバッグモードの場合は、常にAIに送る処理を開始する
+            if (isDebugMode)
+            {
+                // AIに送る処理を開始
+                Debug.Log("Debug Mode: AIに送る処理を開始");
+
+                StartProcessing();
+            }
+        }
+    }
+
+    /// <summary>
+    /// チャットメッセージを受け取ってバッファに追加する
+    /// </summary>
+    /// <param name="team"></param>
+    /// <param name="message"></param>
+    public void AddChatMessage(string _team, string _message)
+    {
+        if (_team == "A")
+        {
+            // TODO: Aチームのチャットを受け取る処理
+        }
+        else if (_team == "B")
+        {
+            // TODO: Bチームのチャットを受け取る処理
+        }
+    }
+
+    /// <summary>
+    /// AIに送るための処理を開始する
+    /// </summary>
+    void StartProcessing()
+    {
+        currentState = AIState.Processing;
+        Debug.Log("--- 1. Processing: スナップショット取得 ---");
+
+        // 通信開始
+        StartConnecting();
+    }
+
+    /// <summary>
+    /// 通信開始処理
+    /// </summary>
+    void StartConnecting()
+    {
+        currentState = AIState.Connecting;
+        Debug.Log("--- 2. Connecting: IT担当のAIへ送信中 ---");
+
+        // TODO: ここで通信の処理を呼ぶ
+
+        // 一旦2秒後に通信が終わったと仮定して進める
+        Invoke("OnReceiveResult", 2.0f);
+    }
+
+    /// <summary>
+    /// AIからの結果を受け取る処理
+    /// </summary>
+    void OnReceiveResult()
+    {
+        currentState = AIState.Verdict;
+        Debug.Log("--- 3. Verdict: 結果受信・演出中 ---");
+
+        // TODO: ここで受け取った結果をもとに演出の処理を呼ぶ
+
+        // 演出時間を考慮して3秒後にIdleに戻る
+        Invoke("BackToIdle", 3.0f);
+    }
+
+    /// <summary>
+    /// Idle状態に戻る処理
+    /// 主に次の判定サイクルの準備（タイマーリセットなど）を行う
+    /// </summary>
+    void BackToIdle()
+    {
+        Debug.Log("--- 4. Idle: 次の判定サイクル ---");
+        timer = 0;
+        currentState = AIState.Idle;
+
+        // デバッグモードの場合は、常にAIに送る処理を開始する
+        isDebugMode = false;
+    }
+}
