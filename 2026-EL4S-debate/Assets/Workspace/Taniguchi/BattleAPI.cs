@@ -26,6 +26,10 @@ public class BattleAPI : MonoBehaviour
     public APICommunicator.BattleCombinedResult save_result;
     private void Start()
     {
+        //StartCoroutine(RunBattleTest());
+    }
+    public void RunBattleTestButton()
+    {
         StartCoroutine(RunBattleTest());
     }
 
