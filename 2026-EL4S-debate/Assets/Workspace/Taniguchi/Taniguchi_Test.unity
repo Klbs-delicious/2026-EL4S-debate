@@ -771,6 +771,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: comments.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[0]'
+      value: "\u304B\u308F\u3044\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[1]'
+      value: "\u6563\u6B69\u3057\u306A\u304F\u3066\u3044\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[2]'
+      value: "\u3046\u308B\u3055\u304F\u306A\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[3]'
+      value: "\u30AE\u30E3\u30C3\u30D7\u304C\u304B\u308F\u3044\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[4]'
+      value: "\u7518\u3048\u3066\u304F\u308C\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[5]'
+      value: "\u6368\u3066\u3066\u3082\u9055\u548C\u611F\u304C\u306A\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[6]'
+      value: "\u5897\u3048\u308B\u306E\u304C\u65E9\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392817273127169966, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[7]'
+      value: "\u72AC\u3068\u304B\u3044\u3046\u9CF4\u304D\u58F0\u3046\u308B\u3055\u304F\u3066\u3067\u304B\u3044\u3060\u3051\u306E\u30B4\u30DFwwwww"
+      objectReference: {fileID: 0}
     - target: {fileID: 4366295149460951212, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: flaskUrl
       value: https://10.77.120.186:5000/api/gemini
@@ -778,6 +814,46 @@ PrefabInstance:
     - target: {fileID: 5607585180501668041, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
       propertyPath: m_Name
       value: APICom
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733522818564147386, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: battle_topic
+      value: "\u72AC\u6D3E vs \u732B\u6D3E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733522818564147386, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: battle_side_a
+      value: "\u72AC\u6D3E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733522818564147386, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: battle_side_b
+      value: "\u732B\u6D3E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: comments.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[0]'
+      value: "\u5FE0\u5B9F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[1]'
+      value: "\u982D\u304C\u3044\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[2]'
+      value: "\u6575\u3092\u565B\u307F\u6BBA\u305B\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[3]'
+      value: "\u30C0\u30FC\u30AF\u30BD\u30A6\u30EB\u3067\u30AF\u30BD\u5F37\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[4]'
+      value: "\u732B\u30AB\u30B9\u606F\u3057\u3066\u308B?wwwwwwww"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983075594562044754, guid: 1b5e3d851b8c6494aa1377610b547ba4, type: 3}
+      propertyPath: 'comments.Array.data[5]'
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

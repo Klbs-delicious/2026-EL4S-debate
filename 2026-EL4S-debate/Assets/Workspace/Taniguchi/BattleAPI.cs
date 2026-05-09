@@ -24,6 +24,7 @@ public class BattleAPI : MonoBehaviour
     [SerializeField] public string battle_side_b = "C++派";
     public bool output = false;
     public APICommunicator.BattleCombinedResult save_result;
+    public int now_round = 1;
     private void Start()
     {
         //StartCoroutine(RunBattleTest());
@@ -46,6 +47,7 @@ public class BattleAPI : MonoBehaviour
                 commentSet_A.ClearComments();
                 commentSet_B.ClearComments();
                 OutputResult(result);
+                now_round++; // 次のラウンドに進む
             },
             error =>
             {
@@ -59,21 +61,21 @@ public class BattleAPI : MonoBehaviour
         return new APICommunicator.BattleRequestData
         {
             battle_id = "battle_001",
-            round = 1,
+            round = now_round,
             topic = battle_topic,
 
             side_a = new APICommunicator.SideRequestData
             {
                 side = battle_side_a,
                 comments = commentSet_A.GetPosts(),
-                previous_opponent_output = ""
+                previous_opponent_output = save_result.side_b_result.output_result // 前回の相手の出力を渡す（初回は空文字）
             },
 
             side_b = new APICommunicator.SideRequestData
             {
                 side = battle_side_b,
                 comments = commentSet_B.GetPosts(),
-                previous_opponent_output = ""
+                previous_opponent_output = save_result.side_a_result.output_result
             },
 
             previous_neutral_comment = ""
