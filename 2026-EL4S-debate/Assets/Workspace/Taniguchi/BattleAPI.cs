@@ -18,8 +18,12 @@ public class BattleAPI : MonoBehaviour
 
     [SerializeField] private CommentSet commentSet_A = new CommentSet(); // コメントセットの参照（必要に応じて使用）
     [SerializeField] private CommentSet commentSet_B = new CommentSet();
+
+    [SerializeField] public string battle_topic = "Python派 vs C++派";
+    [SerializeField] public string battle_side_a = "Python派";
+    [SerializeField] public string battle_side_b = "C++派";
     public bool output = false;
-    APICommunicator.BattleCombinedResult saveresult;
+    public APICommunicator.BattleCombinedResult save_result;
     private void Start()
     {
         StartCoroutine(RunBattleTest());
@@ -27,6 +31,7 @@ public class BattleAPI : MonoBehaviour
 
     private IEnumerator RunBattleTest()
     {
+        output = false; // 出力前にフラグを下げておく
         APICommunicator.BattleRequestData battleData =
             CreateBattleData();
 
@@ -51,18 +56,18 @@ public class BattleAPI : MonoBehaviour
         {
             battle_id = "battle_001",
             round = 1,
-            topic = "Python派 vs C++派",
+            topic = battle_topic,
 
             side_a = new APICommunicator.SideRequestData
             {
-                side = "Python派",
+                side = battle_side_a,
                 comments = commentSet_A.GetPosts(),
                 previous_opponent_output = ""
             },
 
             side_b = new APICommunicator.SideRequestData
             {
-                side = "C++派",
+                side = battle_side_b,
                 comments = commentSet_B.GetPosts(),
                 previous_opponent_output = ""
             },
@@ -96,7 +101,7 @@ public class BattleAPI : MonoBehaviour
         Debug.Log("選択陣営: " + result.neutral_result.selected_side);
         Debug.Log("一言コメント: " + result.neutral_result.comment);
 
-        saveresult = result; // 結果を保存しておく（必要に応じて後で使用可能）
+        save_result = result; // 結果を保存しておく（必要に応じて後で使用可能）
 
         output = true; // 出力完了後、フラグを下げる
     }
