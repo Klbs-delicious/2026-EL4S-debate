@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3194127877078275873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8408821857112524249}
+  - component: {fileID: 7983075594562044754}
+  m_Layer: 0
+  m_Name: Side_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8408821857112524249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194127877078275873}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 911369904756986833}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7983075594562044754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194127877078275873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fd17aa9f9094d41bf22fa8ce38b090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CommentSet
+  comments:
+  - "Python\u306F\u30E9\u30A4\u30D6\u30E9\u30EA\u304C\u591A\u3044"
+  - "\u521D\u5FC3\u8005\u3067\u3082\u4F7F\u3044\u3084\u3059\u3044"
+  - "\u30BB\u30DF\u30B3\u30ED\u30F3\u3092\u66F8\u304B\u306A\u304F\u3066\u3044\u3044"
+  - "\u7C21\u5358"
+  - "\u4F7F\u3044\u3084\u3059\u3044"
+  - "C++\u3068\u304B\u4EBA\u9593\u69D8\u306B\u512A\u3057\u304F\u306D\u3048\u3093\u3060\u3088\u30AB\u30B9"
+--- !u!1 &5607585180501668041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2201721598287733118}
+  - component: {fileID: 4366295149460951212}
+  m_Layer: 0
+  m_Name: APICom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2201721598287733118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5607585180501668041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 911369904756986833}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4366295149460951212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5607585180501668041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810fc271e4eadbd4096b0e5b8b4485ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::APICommunicator
+  apiKey: AIzaSyAYtvdbQP-aYhDm9qGavGDUdfeKebePYBA
+  preferredModel: gemini-1.5-flash
+--- !u!1 &7005046218504222937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4895261289841361288}
+  - component: {fileID: 2392817273127169966}
+  m_Layer: 0
+  m_Name: Side_B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4895261289841361288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005046218504222937}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 911369904756986833}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2392817273127169966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005046218504222937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fd17aa9f9094d41bf22fa8ce38b090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CommentSet
+  comments:
+  - "C++\u306F\u7D30\u304B\u304F\u8A2D\u5B9A\u3067\u304D\u308B"
+  - "\u30EA\u30D5\u30A1\u30EC\u30F3\u30B9\u304C\u8C4A\u5BCC"
+  - "\u30E1\u30E2\u30EA\u7BA1\u7406\u3092\u5FB9\u5E95\u3067\u304D\u308B"
+  - "\u30B2\u30FC\u30E0\u5236\u4F5C\u3067\u4FBF\u5229"
+  - "DirectX\u304C\u4F7F\u3048\u308B"
+  - "Python\u3068\u304B\u3044\u3046\u30A4\u30F3\u30C7\u30F3\u30C8\u5408\u308F\u305B\u306A\u3044\u3068\u3044\u3051\u306A\u3044\u30B4\u30DFwwww"
+--- !u!1 &7417631579080654895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911369904756986833}
+  - component: {fileID: 7733522818564147386}
+  m_Layer: 0
+  m_Name: APITest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &911369904756986833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417631579080654895}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8408821857112524249}
+  - {fileID: 4895261289841361288}
+  m_Father: {fileID: 2201721598287733118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7733522818564147386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417631579080654895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56244cd364ab63c4d85f55eb47629b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleAPI
+  api: {fileID: 4366295149460951212}
+  commentSet_A: {fileID: 7983075594562044754}
+  commentSet_B: {fileID: 2392817273127169966}
+  battle_topic: "Python\u6D3E vs C++\u6D3E"
+  battle_side_a: "Python\u6D3E"
+  battle_side_b: "C++\u6D3E"
+  output: 0
+  save_result:
+    side_a_result:
+      side: 
+      output_result: 
+    side_b_result:
+      side: 
+      output_result: 
+    neutral_result:
+      score: 0
+      selected_side: 
+      comment: 
