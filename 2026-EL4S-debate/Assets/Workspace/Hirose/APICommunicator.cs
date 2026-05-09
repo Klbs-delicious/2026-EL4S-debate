@@ -16,7 +16,7 @@ using UnityEngine.Networking;
 public class APICommunicator : MonoBehaviour
 {
     [Header("Gemini API Key")]
-    [SerializeField] private string apiKey = "";
+    [SerializeField] private string apiKey = "AIzaSyB4vKrar_aKp_uyB-zsTMlLsBR-23W7C2AAIzaSyB4vKrar_aKp_uyB-zsTMlLsBR-23W7C2A";
 
     [Header("Preferred Model")]
     [SerializeField] private string preferredModel = "gemini-1.5-flash";
@@ -304,7 +304,7 @@ $@"あなたはAIレスバトルアプリの進行AIです。
 ・各陣営の発言は200文字以内
 ・少し熱量のある、人間らしい口調にする
 ・相手陣営への人格否定や侮辱はしない
-・ユーザーの元コメントの主張をできるだけ反映する
+・ユーザーの元コメントの表現を尊重し、出来るだけそのまま使う
 ・相手の主張も踏まえて反論または補強を行う
 
 【ニュートラルAIの条件】
