@@ -14,7 +14,10 @@ public class AIPipeline : MonoBehaviour
 
     [Header("参照")]
     [SerializeField, Tooltip("ゲーム全体の流れを管理するクラス")]
-    GameSystem gameSystem; 
+    GameSystem gameSystem;
+
+    [SerializeField, Tooltip("AIレスバトルのAPI送信テストを行うクラス")]
+    BattleAPI battleAPI;
 
     [Header("Settings")]
     [SerializeField, Tooltip("何秒ごとに判定するか（AIにチャット内容を送るのか）")]
@@ -23,6 +26,9 @@ public class AIPipeline : MonoBehaviour
 
     [SerializeField]
     bool isDebugMode = true;
+
+    private bool aiOutput = false;
+    public APICommunicator.BattleCombinedResult result;
 
     void Update()
     {
@@ -45,6 +51,16 @@ public class AIPipeline : MonoBehaviour
                 StartProcessing();
             }
         }
+
+        else if (currentState == AIState.Connecting)
+        {
+            // AIからの結果を待つ状態
+            if (battleAPI.output)
+            {
+                battleAPI.output = false;
+                OnReceiveResult();
+            }
+        }
     }
 
     /// <summary>
@@ -57,10 +73,12 @@ public class AIPipeline : MonoBehaviour
         if (_team == "A")
         {
             // TODO: Aチームのチャットを受け取る処理
+            battleAPI.CommentSet_A(_message);
         }
         else if (_team == "B")
         {
             // TODO: Bチームのチャットを受け取る処理
+            battleAPI.CommentSet_B(_message);
         }
     }
 
@@ -84,10 +102,8 @@ public class AIPipeline : MonoBehaviour
         currentState = AIState.Connecting;
         Debug.Log("--- 2. Connecting: IT担当のAIへ送信中 ---");
 
-        // TODO: ここで通信の処理を呼ぶ
-
-        // 一旦2秒後に通信が終わったと仮定して進める
-        Invoke("OnReceiveResult", 2.0f);
+        // ここで通信の処理を呼ぶ
+        battleAPI.RunBattleTestButton();
     }
 
     /// <summary>
@@ -99,9 +115,10 @@ public class AIPipeline : MonoBehaviour
         Debug.Log("--- 3. Verdict: 結果受信・演出中 ---");
 
         // TODO: ここで受け取った結果をもとに演出の処理を呼ぶ
-        int score = 0; // 仮のスコア
+        result = battleAPI.save_result;
 
-        // TODO: スコアの更新
+        // スコアの更新
+        int score = result.neutral_result.score;
         gameSystem.UpdateScore(score);
 
         // 演出時間を考慮して3秒後にIdleに戻る
