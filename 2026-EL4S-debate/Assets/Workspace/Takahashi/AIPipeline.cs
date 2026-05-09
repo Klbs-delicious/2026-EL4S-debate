@@ -12,9 +12,13 @@ public class AIPipeline : MonoBehaviour
     [SerializeField]
     private AIState currentState = AIState.Idle;
 
+    [Header("参照")]
+    [SerializeField, Tooltip("ゲーム全体の流れを管理するクラス")]
+    GameSystem gameSystem; 
+
     [Header("Settings")]
-    [SerializeField,Tooltip("何秒ごとに判定するか（AIにチャット内容を送るのか）")]
-    private float judgeInterval = 10f; 
+    [SerializeField, Tooltip("何秒ごとに判定するか（AIにチャット内容を送るのか）")]
+    private float judgeInterval = 10f;
     private float timer;
 
     [SerializeField]
@@ -95,6 +99,10 @@ public class AIPipeline : MonoBehaviour
         Debug.Log("--- 3. Verdict: 結果受信・演出中 ---");
 
         // TODO: ここで受け取った結果をもとに演出の処理を呼ぶ
+        int score = 0; // 仮のスコア
+
+        // TODO: スコアの更新
+        gameSystem.UpdateScore(score);
 
         // 演出時間を考慮して3秒後にIdleに戻る
         Invoke("BackToIdle", 3.0f);
